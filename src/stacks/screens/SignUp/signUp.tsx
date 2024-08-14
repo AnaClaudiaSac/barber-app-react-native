@@ -17,6 +17,8 @@ import BarberLogo from '../../../assets/barber.svg';
 import PersonIcon from '../../../assets/person.svg';
 import SignInput from '../../../components/SignInput';
 
+import Api from '../../../Api';
+
 export default function () {
   const navigation = useNavigation();
 
@@ -24,7 +26,18 @@ export default function () {
   const [emailField, setEmailField] = useState('');
   const [passwordField, setPasswordField] = useState('');
 
-  const handleSignClick = () => {};
+  const handleSignClick = async () => {
+    if (nameField !== '' && emailField !== '' && passwordField !== '') {
+      let res = await Api.signUp(nameField, emailField, passwordField);
+      if (res.token) {
+        alert('DEU CERTO!');
+      } else {
+        alert('Erro: ' + res.error);
+      }
+    } else {
+      alert('Preenha os campos');
+    }
+  };
 
   const handleMessageButtonClick = () => {
     navigation.reset({
