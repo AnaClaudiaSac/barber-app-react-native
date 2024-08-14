@@ -14,10 +14,13 @@ import {
 import LockIcon from '../../../assets/lock.svg';
 import EmailIcon from '../../../assets/email.svg';
 import BarberLogo from '../../../assets/barber.svg';
+import PersonIcon from '../../../assets/person.svg';
 import SignInput from '../../../components/SignInput';
 
 export default function () {
   const navigation = useNavigation();
+
+  const [nameField, setNameField] = useState('');
   const [emailField, setEmailField] = useState('');
   const [passwordField, setPasswordField] = useState('');
 
@@ -25,7 +28,7 @@ export default function () {
 
   const handleMessageButtonClick = () => {
     navigation.reset({
-      routes: [{name: 'SignUp'}],
+      routes: [{name: 'SignIn'}],
     });
   };
 
@@ -34,6 +37,12 @@ export default function () {
       <BarberLogo width="100%" height="160" />
 
       <InputArea>
+        <SignInput
+          IconSvg={PersonIcon}
+          placeholder="Digite seu nome"
+          value={nameField}
+          onChangeText={(value: string) => setNameField(value)}
+        />
         <SignInput
           IconSvg={EmailIcon}
           placeholder="Digite seu e-mail"

@@ -25,9 +25,9 @@ export default function () {
   const handleSignClick = () => {};
 
   const handleMessageButtonClick = () => {
-    // navigation.reset({
-    //   routes: [{name: 'SignUp'}],
-    // });
+    navigation.reset({
+      routes: [{name: 'SignUp'}],
+    });
   };
 
   return (
